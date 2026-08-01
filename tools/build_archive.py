@@ -207,7 +207,8 @@ PAGE = """<!DOCTYPE html>
   .grid i { position:absolute; left:0; right:0; border-top:1px solid rgba(10,17,32,0.07); }
   .grid i em { position:absolute; left:0; top:-16px; font-style:normal; font-family:'DIN Alternate', Menlo, sans-serif; font-size:10px; letter-spacing:0.08em; color:var(--faint); }
   .chart { display:flex; align-items:flex-end; gap:2px; height:200px; border-bottom:1px solid var(--line); }
-  .bar { flex:1; min-width:5px; background:var(--blue); border-radius:4px 4px 0 0; position:relative; cursor:pointer; }
+  .bar { flex:1; min-width:5px; background:var(--blue); border-radius:4px 4px 0 0; position:relative; cursor:pointer; transition:height 0.45s cubic-bezier(0.22,1,0.36,1); }
+  @media (prefers-reduced-motion: reduce) { .bar { transition:none; } }
   .bar:hover, .bar:focus-visible { background:var(--blue-deep); outline:none; }
   .bar.race { background:var(--ink); }
   .bar-val { position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:11px; color:var(--muted); white-space:nowrap; }
@@ -340,11 +341,25 @@ var tt = document.getElementById('tt');
 
 function fmt(n) { return (Math.round(n * 10) / 10).toFixed(1); }
 
+var Y_MAX = 130;
+
 function applyTier() {
   document.body.classList.toggle('tiered', pct !== 100);
   document.querySelectorAll('.tminus tbody tr').forEach(function (tr) {
     var mi = parseFloat(tr.dataset.mi);
     tr.querySelector('.yours').textContent = pct === 100 ? '\\u2014' : fmt(mi * pct / 100);
+  });
+  document.querySelectorAll('.bar').forEach(function (bar) {
+    var mi = parseFloat(bar.dataset.mi) * pct / 100;
+    bar.style.height = (mi / Y_MAX * 100) + '%';
+    var val = bar.querySelector('.bar-val');
+    if (val) {
+      if (bar.classList.contains('race')) {
+        val.textContent = pct === 100 ? '26.2' : fmt(mi);
+      } else {
+        val.textContent = fmt(mi);
+      }
+    }
   });
 }
 
