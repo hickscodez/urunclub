@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="U Run Club: a free running club for every ambition. Every Monday, a real 125-mile-a-week training block becomes your benchmark. Pick your percentage and run yours. Rnning needs U.">
+<meta property="og:title" content="U Run Club — Rnning needs U">
+<meta property="og:description" content="A free club for every runner with an ambition. Pick your percentage of the weekly number and run yours.">
+<meta property="og:image" content="https://urunclub.com/og.png">
+<meta property="og:url" content="https://urunclub.com">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231233E8%22/><text x=%2250%22 y=%2274%22 font-size=%2270%22 font-family=%22Arial Narrow,sans-serif%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22>U</text></svg>">
+<title>U Run Club — Rnning needs U</title>
+<style>
+  :root {
+    --paper:#FFFFFF;
+    --tint:#F3F5F9;
+    --ink:#0A1120;
+    --muted:#525E74;
+    --faint:#8B94A8;
+    --line:rgba(10,17,32,0.12);
+    --blue:#1233E8;
+    --blue-deep:#0C24AC;
+    --shadow:0 1px 2px rgba(10,17,32,0.05), 0 8px 24px rgba(10,17,32,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; }
+  body {
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Helvetica Neue', -apple-system, Arial, sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+  }
+  .wrap { max-width:680px; margin:0 auto; padding:0 24px; }
+  .u { color:var(--blue); }
+  .disp { font-family:'Avenir Next Condensed','DIN Condensed','Arial Narrow',sans-serif; font-weight:800; text-transform:uppercase; }
+  .data { font-family:'DIN Alternate', Menlo, sans-serif; }
+  .label {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--faint);
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 0;
+  }
+  .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; }
+  .pill {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--blue); border:1px solid var(--blue); border-radius:999px; padding:6px 14px 5px;
+  }
+  .topline { border-bottom:1px solid var(--line); }
+
+  /* ---------- hero ---------- */
+  .hero { padding:72px 0 64px; position:relative; }
+  .eyebrow {
+    display:flex; align-items:center; gap:10px;
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--blue);
+    margin-bottom:30px;
+  }
+  .eyebrow::before { content:"+"; color:var(--faint); font-weight:400; }
+  .wordmark { line-height:0.86; letter-spacing:0.005em; }
+  .wordmark > span { display:block; font-size:clamp(70px, 20vw, 132px); } .wordmark > span span { display:inline; }
+  .ghost {
+    color:transparent;
+    -webkit-text-stroke:3px var(--blue);
+  }
+  .device-note {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.1em;
+    color:var(--faint); margin-top:16px; text-transform:uppercase;
+  }
+  .hero-pitch { margin-top:34px; font-size:19px; color:var(--muted); max-width:31em; }
+  .hero-pitch strong { color:var(--ink); font-weight:600; }
+
+  /* ---------- capture ---------- */
+  .capture { margin-top:32px; display:flex; flex-direction:column; gap:12px; }
+  .capture input {
+    width:100%; padding:16px 18px;
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    color:var(--ink); font-family:inherit; font-size:16px;
+    box-shadow:inset 0 1px 2px rgba(10,17,32,0.04);
+  }
+  .capture input::placeholder { color:var(--faint); }
+  .capture input:focus { outline:2px solid var(--blue); outline-offset:1px; }
+  .btn {
+    display:block; width:100%; padding:16px 20px 15px;
+    background:var(--blue); color:#fff;
+    font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase;
+    font-size:20px; letter-spacing:0.09em;
+    text-align:center; border:none; border-radius:8px; text-decoration:none;
+    box-shadow:0 2px 0 var(--blue-deep), 0 10px 24px rgba(18,51,232,0.25);
+  }
+  .btn { cursor:pointer; }
+  .capture .ok {
+    font-size:16px; color:var(--ink); font-weight:600;
+    padding:16px 18px; background:rgba(18,51,232,0.06);
+    border:1px solid var(--blue); border-radius:8px;
+  }
+  .capture .ok b { color:var(--blue); }
+  .capture-sub { font-size:14px; color:var(--faint); }
+  .capture-sub strong { color:var(--muted); font-weight:600; }
+
+  /* ---------- ticker ---------- */
+  .ticker {
+    background:var(--blue); color:#fff; overflow:hidden; white-space:nowrap;
+    padding:12px 0 10px; transform:rotate(0deg);
+  }
+  .ticker .disp { font-size:18px; letter-spacing:0.12em; }
+  .ticker .sep { opacity:0.55; margin:0 18px; }
+
+  /* ---------- sections ---------- */
+  section { padding:64px 0 12px; }
+  .sec-head { font-size:46px; line-height:1; margin-bottom:8px; }
+  .sec-sub { margin-bottom:36px; }
+
+  .rows { display:flex; flex-direction:column; }
+  .row { display:flex; gap:20px; padding:30px 0; border-top:1px solid var(--line); }
+  .row:last-child { border-bottom:1px solid var(--line); }
+  .when {
+    flex:0 0 84px;
+    font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:12px; letter-spacing:0.08em;
+    color:var(--blue); text-transform:uppercase; padding-top:5px;
+  }
+  .when b {
+    display:inline-block; background:rgba(18,51,232,0.08); border-radius:6px;
+    padding:4px 9px 3px; font-weight:700;
+  }
+  .row h3 { font-weight:700; font-size:18px; margin-bottom:8px; letter-spacing:-0.01em; }
+  .row p { color:var(--muted); font-size:16px; max-width:32em; }
+
+  /* data strip */
+  .datastrip {
+    margin-top:18px; display:flex;
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    overflow:hidden; box-shadow:var(--shadow);
+  }
+  .stat { flex:1; padding:16px 8px 13px; text-align:center; border-left:1px solid var(--line); }
+  .stat:first-child { border-left:none; }
+  .stat .n { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:26px; font-variant-numeric:tabular-nums; line-height:1.05; color:var(--ink); }
+  .stat .l { font-family:'DIN Alternate', Menlo, sans-serif; font-size:10px; letter-spacing:0.14em; color:var(--faint); text-transform:uppercase; margin-top:4px; }
+  .datastrip-cap { margin-top:10px; }
+
+  /* ---------- tiers ---------- */
+  .tiers { background:var(--tint); margin-top:56px; padding-bottom:64px; }
+  .bibs { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
+  .bib {
+    background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:10px;
+    padding:20px 16px 16px; position:relative;
+    display:flex; flex-direction:column; align-items:center;
+    box-shadow:var(--shadow);
+  }
+  .bib::before, .bib::after {
+    content:""; position:absolute; top:11px; width:8px; height:8px;
+    border-radius:50%; background:var(--tint); border:1px solid var(--line);
+  }
+  .bib::before { left:11px; }
+  .bib::after { right:11px; }
+  .bib .the { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:10px; letter-spacing:0.24em; color:var(--faint); }
+  .bib .num { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; font-size:68px; line-height:1; color:var(--blue); }
+  .bib .of { font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.05em; color:var(--faint); }
+  .tier-note { margin-top:22px; font-size:14px; color:var(--muted); }
+
+  /* ---------- why ---------- */
+  .why p { color:var(--muted); font-size:17px; margin-bottom:20px; max-width:34em; }
+  .pull {
+    font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase;
+    font-size:36px; line-height:1.02; letter-spacing:0.02em; color:var(--ink);
+    border-left:4px solid var(--blue); padding-left:20px; margin:30px 0;
+  }
+  .pull .ghost { -webkit-text-stroke:2px var(--blue); }
+
+  /* ---------- fine print + footer ---------- */
+  .fine { padding:52px 0 20px; }
+  .fine p { font-size:13px; color:var(--faint); max-width:40em; }
+  footer {
+    margin-top:20px; border-top:1px solid var(--line);
+    padding:26px 0 46px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+  }
+  footer .fm { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:18px; letter-spacing:0.05em; }
+  footer .fl { font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.08em; color:var(--faint); }
+  footer .fl span { margin-left:16px; }
+
+  /* ---------- desktop ---------- */
+  @media (min-width:900px) {
+    .wrap { max-width:1040px; }
+    .hero { padding:104px 0 84px; }
+    .wordmark > span { font-size:164px; }
+    .hero-pitch { font-size:20px; }
+    .capture { flex-direction:row; max-width:620px; }
+    .capture input { flex:1; }
+    .btn { width:auto; padding:16px 36px 15px; white-space:nowrap; }
+    .sec-head { font-size:58px; }
+    .bibs { grid-template-columns:repeat(4, 1fr); }
+    .row { gap:40px; }
+    .when { flex:0 0 104px; }
+    .ticker .disp { font-size:20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topline">
+  <div class="wrap topbar">
+    <div class="mark">U R<span class="u">U</span>N CLUB</div>
+    <div class="pill">Free to join</div>
+  </div>
+</div>
+
+<header class="wrap hero">
+  <div class="eyebrow">A club for every ambition</div>
+  <h1 class="wordmark disp">
+    <span>R<span class="ghost">U</span>NNING</span>
+    <span>NEEDS <span class="u">U</span></span>
+  </h1>
+  <p class="device-note">The word is missing its U. So is the sport.</p>
+  <p class="hero-pitch"><strong>U Run Club</strong> is for every runner with an ambition: first 5K, first marathon, sub-3, or just out the door 4 days a week. <strong>You define the goal.</strong> The club is where you exercise it.</p>
+  <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
+    <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
+    <button class="btn" type="submit">Join the club</button>
+  </form>
+  <p class="capture-sub"><strong>Free.</strong> Every ambition welcome. Bring yours.</p>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <span class="disp">RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U</span>
+</div>
+
+<section class="wrap">
+  <h2 class="sec-head disp">How it works</h2>
+  <p class="sec-sub label">4 touchpoints · Your goals · My data</p>
+  <div class="rows">
+    <div class="row">
+      <div class="when"><b>Mon</b></div>
+      <div>
+        <h3>The Number, every Monday.</h3>
+        <p>Every week I publish my mileage block so that you can define your goals on your own terms. Mileage, run count, long run, everything. You don't have to run my week exactly. Pick the percentage that works for you, 20, 30, 40, or 60, and run yours.</p>
+        <div class="datastrip">
+          <div class="stat"><div class="n">125</div><div class="l">Miles</div></div>
+          <div class="stat"><div class="n">16</div><div class="l">Runs</div></div>
+          <div class="stat"><div class="n">22.1</div><div class="l">Long run</div></div>
+          <div class="stat"><div class="n">6:39</div><div class="l">Avg pace</div></div>
+        </div>
+        <div class="datastrip-cap label">Last full week · Straight off the watch</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when"><b>Wed</b></div>
+      <div>
+        <h3>The club workout, every Wednesday.</h3>
+        <p>1 session, written by me, broken up through 4 tiers. Workouts will be specced for a combination of strength, speed, and VO2 improvement!</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when"><b>Sep-Oct</b></div>
+      <div>
+        <h3>Run the Build.</h3>
+        <p>An open invitation, September to Chicago. Everyone in the club builds towards something this fall. Mine is Oct 11 in Grant Park. Yours might be NYC, a turkey trot, or a streak you've never held before. Same weeks, your volume, different finish lines.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="when"><b>Oct 5-11</b></div>
+      <div>
+        <h3>The race week drop.</h3>
+        <p>Founding members get my race-morning checklist and fueling card during Chicago week, Oct 5-11. Written for my race. Generalized to work for yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tiers">
+  <section class="wrap" style="padding-bottom:0;">
+    <h2 class="sec-head disp">Pick your number</h2>
+    <p class="sec-sub label">Your percentage of the weekly number</p>
+    <div class="bibs">
+      <div class="bib"><div class="the">THE</div><div class="num">20</div><div class="of">% of the week</div></div>
+      <div class="bib"><div class="the">THE</div><div class="num">30</div><div class="of">% of the week</div></div>
+      <div class="bib"><div class="the">THE</div><div class="num">40</div><div class="of">% of the week</div></div>
+      <div class="bib"><div class="the">THE</div><div class="num">60</div><div class="of">% of the week</div></div>
+    </div>
+    <p class="tier-note">Start at or below your current volume. Move up when a full block says you're ready.</p>
+  </section>
+</div>
+
+<section class="wrap why">
+  <h2 class="sec-head disp">Why <span class="u">U</span> run?</h2>
+  <p class="sec-sub label">The consistency behind the number</p>
+  <p>In 10+ years of running I have never taken more than 1 week off. Through college seasons, 125-mile build weeks, and everything since Boston, I've learned how to hold high volume and high performance while keeping my body and mind healthy the whole way. That balance has carried me to top 10 finishes at the Marathon Majors and 2 marathons under 2:09.</p>
+  <p>That consistency is what's kept me in love with the sport and I want to share it with as many people as possible! My training data isn't a set target. It's a constant to measure your own week against, at your percentage, toward your goals.</p>
+  <div class="pull">We can't spell r<span class="ghost">u</span>nning without <span class="u">U</span>!</div>
+  <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
+    <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
+    <button class="btn" type="submit">Join the club</button>
+  </form>
+</section>
+
+<div class="wrap fine">
+  <p>Pick the tier at or below your current weekly volume. The challenge is consistency against a moving number, not a volume jump. Not medical advice. You know your body and your goal; I only know my mileage.</p>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div class="fm">U R<span class="u">U</span>N CLUB</div>
+    <div class="fl">@_charleshicks<span>#RnningNeedsU</span><span>urunclub.com</span></div>
+  </footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-urc-form]').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = f.querySelector('button');
+    btn.disabled = true; btn.textContent = 'Joining\u2026';
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function () {
+        f.innerHTML = '<div class="ok">You\u2019re in. <b>The Number drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = 'Join the club';
+        f.submit();
+      });
+  });
+});
+</script>
+</body>
+</html>
