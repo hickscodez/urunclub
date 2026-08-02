@@ -47,6 +47,13 @@
     padding:18px 0;
   }
   .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; }
+  .topnav { display:flex; align-items:center; gap:18px; }
+  .topnav a {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid rgba(10,17,32,0.25); padding-bottom:2px;
+  }
+  .topnav a:hover { color:var(--blue); border-bottom-color:var(--blue); }
   .pill {
     font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
     color:var(--blue); border:1px solid var(--blue); border-radius:999px; padding:6px 14px 5px;
@@ -214,7 +221,10 @@
 <div class="topline">
   <div class="wrap topbar">
     <div class="mark">U R<span class="u">U</span>N CLUB</div>
-    <div class="pill">Free to join</div>
+    <nav class="topnav">
+      <a href="/archive/">The Archive</a>
+      <span class="pill">Free to join</span>
+    </nav>
   </div>
 </div>
 
@@ -244,7 +254,7 @@
     <div class="row">
       <div class="when"><b>Mon</b></div>
       <div>
-        <h3>The Number, every Monday.</h3>
+        <h3>The Log, every Monday.</h3>
         <p>Every week I publish my mileage block so that you can define your goals on your own terms. Mileage, run count, long run, everything. You don't have to run my week exactly. Pick the percentage that works for you, 20, 30, 40, or 60, and run yours.</p>
         <div class="datastrip">
           <div class="stat"><div class="n">125</div><div class="l">Miles</div></div>
@@ -296,7 +306,7 @@
 
 <section class="wrap why">
   <h2 class="sec-head disp">Why <span class="u">U</span> run?</h2>
-  <p class="sec-sub label">The consistency behind the number</p>
+  <p class="sec-sub label">The consistency behind the Log</p>
   <p>In 10+ years of running I have never taken more than 1 week off. Through college seasons, 125-mile build weeks, and everything since Boston, I've learned how to hold high volume and high performance while keeping my body and mind healthy the whole way. That balance has carried me to top 10 finishes at the Marathon Majors and 2 marathons under 2:10.</p>
   <p>That consistency is what's kept me in love with the sport and I want to share it with as many people as possible! My training data isn't a set target. It's a constant to measure your own week against, at your percentage, toward your goals.</p>
   <div class="pull">We can't spell r<span class="ghost">u</span>nning without <span class="u">U</span>!</div>
@@ -326,7 +336,7 @@ document.querySelectorAll('[data-urc-form]').forEach(function (f) {
     fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function () {
-        f.innerHTML = '<div class="ok">You\u2019re in. <b>The Number drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
+        f.innerHTML = '<div class="ok">You\u2019re in. <b>The Log drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
       })
       .catch(function () {
         btn.disabled = false; btn.textContent = 'Join the club';

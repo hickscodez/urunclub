@@ -313,7 +313,7 @@ PAGE = """<!DOCTYPE html>
 <div class="joiner">
   <section class="wrap" style="padding:0;">
     <h2 class="sec-head disp">R<span class="ghost">u</span>n the next one with <span class="u">u</span>s</h2>
-    <p class="jsub">The next build in this archive is happening right now: Chicago, Oct 11. Members get it live, every Monday, at their percentage.</p>
+    <p class="jsub">The next build in this archive is happening right now: Chicago, Oct 11. The Log drops every Monday. Members run their percentage.</p>
     <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
       <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
       <button class="btn" type="submit">Join the club</button>
