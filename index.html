@@ -44,7 +44,7 @@
   /* ---------- topbar ---------- */
   .topbar {
     display:flex; justify-content:space-between; align-items:center;
-    padding:18px 0;
+    padding:18px 24px;
   }
   .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; }
   .topnav { display:flex; align-items:center; gap:18px; }
@@ -61,7 +61,7 @@
   .topline { border-bottom:1px solid var(--line); }
 
   /* ---------- hero ---------- */
-  .hero { padding:72px 0 64px; position:relative; }
+  .hero { padding:72px 24px 64px; position:relative; }
   .eyebrow {
     display:flex; align-items:center; gap:10px;
     font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; font-weight:700;
@@ -119,7 +119,7 @@
   .ticker .sep { opacity:0.55; margin:0 18px; }
 
   /* ---------- sections ---------- */
-  section { padding:64px 0 12px; }
+  section.wrap { padding:64px 24px 12px; }
   .sec-head { font-size:46px; line-height:1; margin-bottom:8px; }
   .sec-sub { margin-bottom:36px; }
 
@@ -188,7 +188,7 @@
   .pull .ghost { -webkit-text-stroke:2px var(--blue); }
 
   /* ---------- fine print + footer ---------- */
-  .fine { padding:52px 0 20px; }
+  .fine { padding:52px 24px 20px; }
   .fine p { font-size:13px; color:var(--faint); max-width:40em; }
   footer {
     margin-top:20px; border-top:1px solid var(--line);
@@ -202,7 +202,7 @@
   /* ---------- desktop ---------- */
   @media (min-width:900px) {
     .wrap { max-width:1040px; }
-    .hero { padding:104px 0 84px; }
+    .hero { padding:104px 24px 84px; }
     .wordmark > span { font-size:164px; }
     .hero-pitch { font-size:20px; }
     .capture { flex-direction:row; max-width:620px; }
