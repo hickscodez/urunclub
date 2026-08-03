@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Find your U Run Club number in 10 seconds. Slide to the miles you ran last week and the club does the math: The 20, 30, 40, or 60.">
+<meta property="og:title" content="What's your number? — U Run Club">
+<meta property="og:description" content="Slide to last week's miles. Get your number. 0 math.">
+<meta property="og:url" content="https://urunclub.com/number/">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%231233E8%22/><text x=%2250%22 y=%2274%22 font-size=%2270%22 font-family=%22Arial Narrow,sans-serif%22 font-weight=%22bold%22 text-anchor=%22middle%22 fill=%22white%22>U</text></svg>">
+<title>What's your number? — U Run Club</title>
+<style>
+  :root {
+    --paper:#FFFFFF;
+    --tint:#F3F5F9;
+    --ink:#0A1120;
+    --muted:#525E74;
+    --faint:#8B94A8;
+    --line:rgba(10,17,32,0.12);
+    --blue:#1233E8;
+    --blue-deep:#0C24AC;
+    --shadow:0 1px 2px rgba(10,17,32,0.05), 0 8px 24px rgba(10,17,32,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; }
+  body {
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Helvetica Neue', -apple-system, Arial, sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+  }
+  .wrap { max-width:680px; margin:0 auto; padding:0 24px; }
+  .u { color:var(--blue); }
+  .disp { font-family:'Avenir Next Condensed','DIN Condensed','Arial Narrow',sans-serif; font-weight:800; text-transform:uppercase; }
+  .data { font-family:'DIN Alternate', Menlo, sans-serif; }
+  .label {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px;
+    letter-spacing:0.18em; text-transform:uppercase; color:var(--faint);
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+  .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; }
+  .topbar .mark a { color:inherit; text-decoration:none; }
+  .topnav { display:flex; align-items:center; gap:18px; }
+  .topnav a {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid rgba(10,17,32,0.25); padding-bottom:2px;
+  }
+  .topnav a:hover { color:var(--blue); border-bottom-color:var(--blue); }
+  .pill {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--blue); border:1px solid var(--blue); border-radius:999px; padding:6px 14px 5px;
+  }
+  .topline { border-bottom:1px solid var(--line); }
+
+  /* ---------- hero ---------- */
+  .hero { padding:64px 0 8px; }
+  .eyebrow {
+    display:flex; align-items:center; gap:10px;
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; font-weight:700;
+    letter-spacing:0.22em; text-transform:uppercase; color:var(--blue);
+    margin-bottom:30px;
+  }
+  .eyebrow::before { content:"+"; color:var(--faint); font-weight:400; }
+  .wordmark { line-height:0.86; letter-spacing:0.005em; }
+  .wordmark > span { display:block; font-size:clamp(54px, 14vw, 108px); }
+  .ghost { color:transparent; -webkit-text-stroke:3px var(--blue); }
+  .device-note {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.1em;
+    color:var(--faint); margin-top:16px; text-transform:uppercase;
+  }
+
+  /* ---------- picker ---------- */
+  .picker { padding:40px 0 56px; }
+  .picker-card {
+    border:1px solid var(--line); border-radius:14px; padding:28px 24px 30px;
+    box-shadow:var(--shadow); background:var(--paper);
+  }
+  .readout { display:flex; align-items:baseline; gap:12px; margin:6px 0 4px; }
+  .readout .mi {
+    font-family:'Avenir Next Condensed',sans-serif; font-weight:800;
+    font-size:76px; line-height:1; color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+  .readout .mi-l { font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--faint); }
+  input[type=range] {
+    -webkit-appearance:none; appearance:none; width:100%; height:36px; background:transparent; margin-top:6px;
+  }
+  input[type=range]:focus { outline:none; }
+  input[type=range]::-webkit-slider-runnable-track {
+    height:4px; border-radius:2px;
+    background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--fill, 27%), var(--line) var(--fill, 27%), var(--line) 100%);
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance:none; appearance:none;
+    width:28px; height:28px; border-radius:50%; margin-top:-12px;
+    background:var(--blue); border:3px solid #fff;
+    box-shadow:0 1px 2px rgba(10,17,32,0.3), 0 0 0 1px var(--line);
+    cursor:pointer;
+  }
+  input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow:0 0 0 3px rgba(18,51,232,0.35); }
+  input[type=range]::-moz-range-track { height:4px; border-radius:2px; background:var(--line); }
+  input[type=range]::-moz-range-progress { height:4px; border-radius:2px; background:var(--blue); }
+  input[type=range]::-moz-range-thumb {
+    width:22px; height:22px; border-radius:50%;
+    background:var(--blue); border:3px solid #fff;
+    box-shadow:0 1px 2px rgba(10,17,32,0.3), 0 0 0 1px var(--line);
+    cursor:pointer;
+  }
+  .slider-cap { display:flex; justify-content:space-between; margin-top:2px; }
+
+  /* ---------- result ---------- */
+  .result { margin-top:28px; display:grid; grid-template-columns:1fr; gap:18px; }
+  .bib {
+    position:relative; text-align:center;
+    border:1px solid var(--line); border-radius:10px; padding:22px 10px 18px;
+    background:var(--paper); box-shadow:var(--shadow);
+  }
+  .bib::before, .bib::after {
+    content:""; position:absolute; top:9px; width:7px; height:7px; border-radius:50%;
+    background:var(--tint); border:1px solid var(--line);
+  }
+  .bib::before { left:11px; }
+  .bib::after { right:11px; }
+  .bib .the { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:10px; letter-spacing:0.24em; color:var(--faint); }
+  .bib .num { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; font-size:68px; line-height:1; color:var(--blue); }
+  .bib .of { font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.05em; color:var(--faint); }
+  .verdict .head { font-size:19px; font-weight:600; color:var(--ink); }
+  .verdict p { color:var(--muted); margin-top:8px; }
+  .verdict .move { margin-top:12px; font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); }
+  @media (min-width:900px) {
+    .wrap { max-width:1040px; }
+    .picker-card { padding:36px 40px 40px; }
+    .result { grid-template-columns:200px 1fr; align-items:center; }
+  }
+
+  /* ---------- capture ---------- */
+  .join { background:var(--tint); padding:56px 0 64px; border-top:1px solid var(--line); }
+  .sec-head { font-size:34px; letter-spacing:0.02em; }
+  .sec-sub { margin:6px 0 18px; }
+  .capture { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
+  .capture input[type=email] {
+    width:100%; padding:16px 18px;
+    background:var(--paper); border:1px solid var(--line); border-radius:8px;
+    color:var(--ink); font-family:inherit; font-size:16px;
+    box-shadow:inset 0 1px 2px rgba(10,17,32,0.04);
+  }
+  .capture input[type=email]::placeholder { color:var(--faint); }
+  .capture input[type=email]:focus { outline:2px solid var(--blue); outline-offset:1px; }
+  .btn {
+    display:block; width:100%; padding:16px 20px 15px;
+    background:var(--blue); color:#fff;
+    font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase;
+    font-size:20px; letter-spacing:0.09em;
+    text-align:center; border:none; border-radius:8px; text-decoration:none;
+    box-shadow:0 2px 0 var(--blue-deep), 0 10px 24px rgba(18,51,232,0.25);
+    cursor:pointer;
+  }
+  .capture .ok {
+    font-size:16px; color:var(--ink); font-weight:600;
+    padding:16px 18px; background:rgba(18,51,232,0.06);
+    border:1px solid var(--blue); border-radius:8px;
+  }
+  .capture .ok b { color:var(--blue); }
+  .capture-sub { font-size:14px; color:var(--faint); }
+  .capture-sub strong { color:var(--muted); font-weight:600; }
+  @media (min-width:900px) {
+    .capture { flex-direction:row; max-width:620px; }
+    .capture input[type=email] { flex:1; }
+  }
+
+  /* ---------- fine + footer ---------- */
+  .fine { padding:36px 24px 8px; }
+  .fine p { font-size:13px; color:var(--faint); max-width:46em; }
+  footer { border-top:1px solid var(--line); margin-top:32px; padding:26px 0 40px;
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; }
+  footer .fm { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:16px; letter-spacing:0.05em; }
+  footer .fl { font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; color:var(--faint); }
+  footer .fl span { margin-left:14px; }
+  footer .fl a { color:inherit; }
+</style>
+</head>
+<body>
+
+<div class="topline">
+  <div class="wrap topbar">
+    <div class="mark"><a href="/">U R<span class="u">U</span>N CLUB</a></div>
+    <nav class="topnav">
+      <a href="/archive/">The Archive</a>
+      <span class="pill">Free to join</span>
+    </nav>
+  </div>
+</div>
+
+<header class="wrap hero">
+  <div class="eyebrow">Find your number</div>
+  <h1 class="wordmark disp">
+    <span>WHAT'S YOUR</span>
+    <span>N<span class="ghost">U</span>MBER?</span>
+  </h1>
+  <p class="device-note">1 slider. 10 seconds. 0 math.</p>
+</header>
+
+<section class="wrap picker">
+  <div class="picker-card">
+    <div class="label">Miles you ran last week</div>
+    <div class="readout"><span class="mi data" id="mi">30</span><span class="mi-l">miles</span></div>
+    <input type="range" id="slider" min="0" max="110" step="1" value="30" aria-label="Miles you ran last week">
+    <div class="slider-cap"><span class="label">0</span><span class="label">110+</span></div>
+
+    <div class="result" aria-live="polite">
+      <div class="bib">
+        <div class="the">THE</div>
+        <div class="num" id="tier">20</div>
+        <div class="of">% of the week</div>
+      </div>
+      <div class="verdict">
+        <div class="head" id="head">You're The 20.</div>
+        <p id="blurb"></p>
+        <div class="move">The Log moves. Your number doesn't.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="join">
+  <div class="wrap">
+    <h2 class="sec-head disp">Got your number? Good.</h2>
+    <p class="sec-sub label">The Log delivers it every Monday · 7am mountain</p>
+    <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
+      <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
+      <button class="btn" type="submit">Join the club</button>
+    </form>
+    <p class="capture-sub"><strong>Free.</strong> Every ambition welcome. Bring yours.</p>
+  </div>
+</section>
+
+<div class="wrap fine">
+  <p>Numbers assume a typical 120-125 mile build week; exact weekly targets come from each Monday's Log. Pick the tier at or below your current weekly volume. The challenge is consistency against a moving number, not a volume jump. Not medical advice. You know your body and your goal; I only know my mileage.</p>
+</div>
+
+<div class="wrap">
+  <footer>
+    <div class="fm">U R<span class="u">U</span>N CLUB</div>
+    <div class="fl">@_charleshicks<span><a href="/archive/">The Build Archive</a></span><span>#RnningNeedsU</span><span>urunclub.com</span></div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var TIERS = [
+    { pct: 20, min: 0,  typical: 25, blurb: "Building to a half or your first marathon. Under 25 miles a week right now? Still The 20: treat it as the target you grow into. No catch-up, the door's always open." },
+    { pct: 20, min: 25, typical: 25, blurb: "Building to a half or your first marathon. About 25 miles in a typical build week, and when the Log takes a down week, so do you." },
+    { pct: 30, min: 38, typical: 38, blurb: "Marathon-build regulars. About 38 miles in a typical build week, scaled to whatever Monday's Log says." },
+    { pct: 40, min: 50, typical: 50, blurb: "Serious age-groupers and BQ chasers. About 50 miles in a typical build week, big weeks when mine are big." },
+    { pct: 60, min: 75, typical: 75, blurb: "Sub-elites and the post-collegiate crowd. About 75 miles in a typical build week. You know exactly what you signed up for." }
+  ];
+  var slider = document.getElementById('slider');
+  var mi = document.getElementById('mi');
+  var tierEl = document.getElementById('tier');
+  var head = document.getElementById('head');
+  var blurb = document.getElementById('blurb');
+
+  function pick(v) {
+    var t = TIERS[0];
+    for (var i = 0; i < TIERS.length; i++) if (v >= TIERS[i].min) t = TIERS[i];
+    return t;
+  }
+  function render() {
+    var v = +slider.value;
+    mi.textContent = v >= 110 ? '110+' : v;
+    slider.style.setProperty('--fill', (v / 110 * 100) + '%');
+    var t = pick(v);
+    tierEl.textContent = t.pct;
+    head.textContent = "You're The " + t.pct + ".";
+    blurb.textContent = t.blurb;
+  }
+  slider.addEventListener('input', render);
+  render();
+})();
+
+document.querySelectorAll('[data-urc-form]').forEach(function (f) {
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = f.querySelector('button');
+    btn.disabled = true; btn.textContent = 'Joining…';
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function () {
+        f.innerHTML = '<div class="ok">You’re in. <b>The Log drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
+      })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = 'Join the club';
+        f.submit();
+      });
+  });
+});
+</script>
+</body>
+</html>
