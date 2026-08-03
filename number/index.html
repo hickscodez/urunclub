@@ -169,7 +169,8 @@
   .capture-sub strong { color:var(--muted); font-weight:600; }
   @media (min-width:900px) {
     .capture { flex-direction:row; max-width:620px; }
-    .capture input[type=email] { flex:1; }
+    .capture input[type=email] { flex:1; min-width:0; }
+    .capture .btn { width:auto; flex:0 0 auto; padding-left:36px; padding-right:36px; white-space:nowrap; }
   }
 
   /* ---------- fine + footer ---------- */
@@ -198,10 +199,9 @@
 <header class="wrap hero">
   <div class="eyebrow">Find your number</div>
   <h1 class="wordmark disp">
-    <span>WHAT'S YO<span class="u">U</span>R</span>
+    <span>WHAT'S YOUR</span>
     <span>N<span class="ghost">U</span>MBER?</span>
   </h1>
-  <p class="device-note">1 slider. 10 seconds. 0 math.</p>
 </header>
 
 <section class="wrap picker">
@@ -220,7 +220,7 @@
       <div class="verdict">
         <div class="head" id="head">You're The 20.</div>
         <p id="blurb"></p>
-        <div class="move">The Log moves. Your number doesn't.</div>
+        <div class="move">A guideline, not a prescription.</div>
       </div>
     </div>
   </div>
@@ -229,7 +229,7 @@
 <section class="join">
   <div class="wrap">
     <h2 class="sec-head disp">Got your number? Good.</h2>
-    <p class="sec-sub label">The Log delivers it every Monday · 7am mountain</p>
+    <p class="sec-sub label">The Log delivers every Monday · 7am mountain time</p>
     <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
       <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
       <button class="btn" type="submit">Join the club</button>
@@ -239,7 +239,7 @@
 </section>
 
 <div class="wrap fine">
-  <p>Numbers assume a typical 120-125 mile build week; exact weekly targets come from each Monday's Log. Pick the tier at or below your current weekly volume. The challenge is consistency against a moving number, not a volume jump. Not medical advice. You know your body and your goal; I only know my mileage.</p>
+  <p>Numbers assume a typical 120-125 mile build week; exact weekly targets come from each Monday's Log. Pick the tier at or below your current weekly volume. The challenge is consistency against a moving number, not a volume jump. Not medical advice. Mileage may vary.</p>
 </div>
 
 <div class="wrap">
@@ -252,11 +252,11 @@
 <script>
 (function () {
   var TIERS = [
-    { pct: 20, min: 0,  typical: 25, blurb: "Building to a half or your first marathon. Under 25 miles a week right now? Still The 20: treat it as the target you grow into. No catch-up, the door's always open." },
-    { pct: 20, min: 25, typical: 25, blurb: "Building to a half or your first marathon. About 25 miles in a typical build week, and when the Log takes a down week, so do you." },
+    { pct: 20, min: 0,  typical: 25, blurb: "Just getting started? Under 25 miles a week right now? Welcome to The 20: treat it as the target you grow into. Getting out the door is the goal here, use the structure as a guideline." },
+    { pct: 20, min: 25, typical: 25, blurb: "Building to a big race? About 25 miles in a typical build week, and when the Log takes a down week, so do you!" },
     { pct: 30, min: 38, typical: 38, blurb: "Marathon-build regulars. About 38 miles in a typical build week, scaled to whatever Monday's Log says." },
-    { pct: 40, min: 50, typical: 50, blurb: "Serious age-groupers and BQ chasers. About 50 miles in a typical build week, big weeks when mine are big." },
-    { pct: 60, min: 75, typical: 75, blurb: "Sub-elites and the post-collegiate crowd. About 75 miles in a typical build week. You know exactly what you signed up for." }
+    { pct: 40, min: 50, typical: 50, blurb: "For ambitious age-groupers and BQ chasers. About 50 miles in a typical build week, significant volume with a cadence for high level training." },
+    { pct: 60, min: 75, typical: 75, blurb: "Sub-elites and the post-collegiate crowd. About 75 miles in a typical build week for those that push their limits. Welcome to the club!" }
   ];
   var slider = document.getElementById('slider');
   var mi = document.getElementById('mi');
