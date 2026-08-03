@@ -86,3 +86,11 @@ private).
   training DB and rewrites `archive/index.html`. Edit the generator, not the output.
 - Deploy = push to main (GitHub Pages, urunclub.com). Nothing goes live without
   Charles's voice-check on new copy.
+
+## CSS gotcha (learned 2026-08-03, commit 81cd600)
+
+`.wrap` sets `padding:0 24px` and, as a class selector, beats element selectors and ties
+with other classes (last-declared wins). Any rule that adds padding to an element that ALSO
+carries `.wrap` must (a) use equal-or-higher specificity declared later, and (b) restate the
+24px horizontal padding. Symptom when violated: sections flush against neighbors, content
+touching screen edges on mobile.
