@@ -232,8 +232,10 @@
     <p class="sec-sub label">The Log delivers every Monday · 7am mountain time</p>
     <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
       <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
+      <input type="hidden" name="fields[number]" id="tier-field" value="">
       <button class="btn" type="submit">Join the club</button>
     </form>
+    <p class="capture-sub" id="join-note" hidden>Joining as <strong>The <span id="join-tier">20</span></strong>. Monday's email converts accordingly.</p>
     <p class="capture-sub"><strong>Free.</strong> Every ambition welcome. Bring yours.</p>
   </div>
 </section>
@@ -278,7 +280,19 @@
     head.textContent = "You're The " + t.pct + ".";
     blurb.textContent = t.blurb;
   }
-  slider.addEventListener('input', render);
+  /* The tier field stays empty until the slider is actually used, so joiners
+     who skip the picker arrive untiered and get caught by the Log's fallback.
+     Once it's set, the join-note discloses exactly what they're joining as. */
+  var tierField = document.getElementById('tier-field');
+  var joinNote = document.getElementById('join-note');
+  var joinTier = document.getElementById('join-tier');
+  slider.addEventListener('input', function () {
+    render();
+    var pct = pick(+slider.value).pct;
+    tierField.value = pct;
+    joinTier.textContent = pct;
+    joinNote.hidden = false;
+  });
   render();
 })();
 

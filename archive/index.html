@@ -299,6 +299,14 @@ document.querySelectorAll('.tbtn').forEach(function (b) {
   });
 });
 
+/* ?u=20|30|40|60 pre-selects the tier (the email link triggers land here) */
+(function () {
+  var m = location.search.match(/[?&]u=(20|30|40|60)\b/);
+  if (!m) return;
+  var b = document.querySelector('.tbtn[data-pct="' + m[1] + '"]');
+  if (b) b.click();
+})();
+
 function showTT(bar, x, y) {
   var mi = parseFloat(bar.dataset.mi), lr = parseFloat(bar.dataset.lr);
   var html = '<b>T-' + bar.dataset.t + '</b> &middot; ' + fmt(mi) + ' mi &middot; ' + bar.dataset.runs + ' runs &middot; LR ' + fmt(lr);
