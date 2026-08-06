@@ -115,6 +115,10 @@
     background:var(--blue); color:#fff; overflow:hidden; white-space:nowrap;
     padding:12px 0 10px; transform:rotate(0deg);
   }
+  .ticker-track { display:flex; width:max-content; animation:ticker-slide 90s linear infinite; }
+  .ticker-track .disp { flex:none; }
+  @keyframes ticker-slide { to { transform:translateX(-50%); } }
+  @media (prefers-reduced-motion:reduce) { .ticker-track { animation:none; } }
   .ticker .disp { font-size:18px; letter-spacing:0.12em; }
   .ticker .sep { opacity:0.55; margin:0 18px; }
 
@@ -245,7 +249,10 @@
 </header>
 
 <div class="ticker" aria-hidden="true">
-  <span class="disp">RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U</span>
+  <div class="ticker-track">
+    <span class="disp">RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span></span>
+    <span class="disp">RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span> RNNING NEEDS U <span class="sep">///</span> JOIN THE CLUB <span class="sep">///</span></span>
+  </div>
 </div>
 
 <section class="wrap">
