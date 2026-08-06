@@ -63,29 +63,18 @@
   .topline { border-bottom:1px solid var(--line); }
 
   /* ---------- hero ---------- */
-  .hero { padding:72px 24px 64px; position:relative; }
-  .eyebrow {
-    display:flex; align-items:center; gap:10px;
-    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; font-weight:700;
-    letter-spacing:0.22em; text-transform:uppercase; color:var(--blue);
-    margin-bottom:30px;
-  }
-  .eyebrow::before { content:"+"; color:var(--faint); font-weight:400; }
+  .hero { padding:48px 24px 40px; position:relative; }
   .wordmark { line-height:0.86; letter-spacing:0.005em; }
   .wordmark > span { display:block; font-size:clamp(70px, 20vw, 132px); } .wordmark > span span { display:inline; }
   .ghost {
     color:transparent;
     -webkit-text-stroke:3px var(--blue);
   }
-  .device-note {
-    font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.1em;
-    color:var(--faint); margin-top:16px; text-transform:uppercase;
-  }
-  .hero-pitch { margin-top:34px; font-size:19px; color:var(--muted); max-width:31em; }
+  .hero-pitch { margin-top:26px; font-size:19px; color:var(--muted); max-width:31em; }
   .hero-pitch strong { color:var(--ink); font-weight:600; }
 
   /* ---------- capture ---------- */
-  .capture { margin-top:32px; display:flex; flex-direction:column; gap:12px; }
+  .capture { margin-top:24px; display:flex; flex-direction:column; gap:12px; }
   .capture input {
     width:100%; padding:16px 18px;
     background:var(--paper); border:1px solid var(--line); border-radius:8px;
@@ -208,7 +197,7 @@
   /* ---------- desktop ---------- */
   @media (min-width:900px) {
     .wrap { max-width:1040px; }
-    .hero { padding:104px 24px 84px; }
+    .hero { padding:48px 24px 28px; }
     .wordmark > span { font-size:164px; }
     .hero-pitch { font-size:20px; }
     .capture { flex-direction:row; max-width:620px; }
@@ -236,12 +225,10 @@
 </div>
 
 <header class="wrap hero">
-  <div class="eyebrow">A club for every ambition</div>
   <h1 class="wordmark disp">
     <span>R<span class="ghost">U</span>NNING</span>
     <span>NEEDS <span class="u">U</span></span>
   </h1>
-  <p class="device-note">The word is missing its U. So is the sport.</p>
   <p class="hero-pitch"><strong>U Run Club</strong> is for every runner with an ambition: first 5K, first marathon, sub-3, or just out the door 4 days a week. <strong>You define the goal.</strong> The club is where you exercise it.</p>
   <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
     <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
