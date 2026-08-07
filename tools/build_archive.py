@@ -172,7 +172,6 @@ PAGE = """<!DOCTYPE html>
   .eyebrow::before { content:"+"; color:var(--faint); font-weight:400; }
   .wordmark { line-height:0.86; letter-spacing:0.005em; }
   .wordmark > span { display:block; font-size:clamp(52px, 14vw, 96px); }
-  .ghost { color:transparent; -webkit-text-stroke:3px var(--blue); }
   .device-note { font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; letter-spacing:0.1em; color:var(--faint); margin-top:16px; text-transform:uppercase; }
   .hero-pitch { margin-top:30px; font-size:19px; color:var(--muted); max-width:31em; }
   .hero-pitch strong { color:var(--ink); font-weight:600; }
@@ -276,7 +275,7 @@ PAGE = """<!DOCTYPE html>
 <header class="wrap hero">
   <div class="eyebrow">Free forever &middot; Straight off the watch</div>
   <h1 class="wordmark disp">
-    <span>THE B<span class="ghost">U</span>ILD</span>
+    <span>THE B<span class="u">U</span>ILD</span>
     <span>ARCHIVE</span>
   </h1>
   <p class="device-note">You can't spell build without U.</p>
@@ -314,7 +313,7 @@ PAGE = """<!DOCTYPE html>
 
 <div class="joiner">
   <section class="wrap" style="padding:0 24px;">
-    <h2 class="sec-head disp">R<span class="ghost">u</span>n the next one with <span class="u">u</span>s</h2>
+    <h2 class="sec-head disp">Run the next one with <span class="u">u</span>s</h2>
     <p class="jsub">The next build in this archive is happening right now: Chicago, Oct 11. The Log drops every Monday. Members run their percentage.</p>
     <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
       <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">

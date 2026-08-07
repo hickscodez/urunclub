@@ -66,10 +66,6 @@
   .hero { padding:48px 24px 40px; position:relative; }
   .wordmark { line-height:0.86; letter-spacing:0.005em; }
   .wordmark > span { display:block; font-size:clamp(70px, 20vw, 132px); } .wordmark > span span { display:inline; }
-  .ghost {
-    color:transparent;
-    -webkit-text-stroke:3px var(--blue);
-  }
   .hero-pitch { margin-top:26px; font-size:19px; color:var(--muted); max-width:31em; }
   .hero-pitch strong { color:var(--ink); font-weight:600; }
   .hero-pitch .nowrap { white-space:nowrap; }
@@ -182,7 +178,6 @@
     font-size:36px; line-height:1.02; letter-spacing:0.02em; color:var(--ink);
     border-left:4px solid var(--blue); padding-left:20px; margin:30px 0;
   }
-  .pull .ghost { -webkit-text-stroke:2px var(--blue); }
 
   /* ---------- fine print + footer ---------- */
   .fine { padding:52px 24px 20px; }
@@ -228,7 +223,7 @@
 
 <header class="wrap hero">
   <h1 class="wordmark disp">
-    <span>R<span class="ghost">U</span>NNING</span>
+    <span>RUNNING</span>
     <span>NEEDS <span class="u">U</span></span>
   </h1>
   <p class="hero-pitch"><strong>U Run Club</strong> is for every runner with an ambition: first 5K, first marathon, sub-3, or just out the door 4 days a week. <strong class="nowrap">You define the goal.</strong></p>
@@ -309,7 +304,7 @@
   <p class="sec-sub label">The consistency behind the Log</p>
   <p>In 10+ years of running I have never taken more than 1 week off. Through college seasons, 125-mile build weeks, and everything since Boston, I've learned how to hold high volume and high performance while keeping my body and mind healthy the whole way. That balance has carried me to top 10 finishes at the Marathon Majors and 2 marathons under 2:10.</p>
   <p>That consistency is what's kept me in love with the sport and I want to share it with as many people as possible! My training data isn't a set target. It's a constant to measure your own week against, at your percentage, toward your goals.</p>
-  <div class="pull">We can't spell r<span class="ghost">u</span>nning without <span class="u">U</span>!</div>
+  <div class="pull">We can't spell running without <span class="u">U</span>!</div>
   <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
     <input type="email" name="email_address" required placeholder="your@email.com" aria-label="Email address">
     <button class="btn" type="submit">Join the club</button>
