@@ -33,10 +33,10 @@ and 3:1 contrast on white). Light theme only; the brand is paper, no dark mode.
 
 ## The U
 
-- Ghost U: `color:transparent; -webkit-text-stroke:3px var(--blue)` (2px at pull-quote size).
-  1 ghost U per headline, max. It belongs to the slogan; don't scatter it.
-- Solid cobalt U: `.u` for the second emphasis in the same lockup (see wordmark: ghost U in
-  RUNNING, solid U in "NEEDS U").
+- Ghost U: `color:transparent; -webkit-text-stroke:3px var(--blue)`. Homepage hero wordmark
+  ONLY (ghost U in RUNNING, solid U in "NEEDS U") — decided 2026-08-06. Nowhere else.
+- Solid cobalt U: `.u` for every other title's mid-word U ("N<u>U</u>MBER?", "THE B<u>U</u>ILD")
+  and standalone U accents in pull lines ("without U!", "with us"). Surrounding word stays ink.
 - Wordmark: "U R<span class=u>U</span>N CLUB" in topbar and footer, always.
 
 ## Layout
