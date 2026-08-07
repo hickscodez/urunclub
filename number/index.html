@@ -41,6 +41,7 @@
     font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px;
     letter-spacing:0.18em; text-transform:uppercase; color:var(--faint);
   }
+  .ask { font-size:17px; font-weight:600; color:var(--ink); }
 
   /* ---------- topbar ---------- */
   .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; }
@@ -207,7 +208,7 @@
 
 <section class="wrap picker">
   <div class="picker-card">
-    <div class="label">Miles you ran last week</div>
+    <div class="ask">Miles you ran last week</div>
     <div class="readout"><span class="mi data" id="mi">30</span><span class="mi-l">miles</span></div>
     <input type="range" id="slider" min="0" max="110" step="1" value="30" aria-label="Miles you ran last week">
     <div class="slider-cap"><span class="label">0</span><span class="label">110+</span></div>
