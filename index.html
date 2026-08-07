@@ -65,6 +65,7 @@
   /* ---------- hero ---------- */
   .hero { padding:48px 24px 40px; position:relative; }
   .wordmark { line-height:0.86; letter-spacing:0.005em; }
+  .ghost { color:transparent; -webkit-text-stroke:3px var(--blue); }
   .wordmark > span { display:block; font-size:clamp(70px, 20vw, 132px); } .wordmark > span span { display:inline; }
   .hero-pitch { margin-top:26px; font-size:19px; color:var(--muted); max-width:31em; }
   .hero-pitch strong { color:var(--ink); font-weight:600; }
@@ -223,7 +224,7 @@
 
 <header class="wrap hero">
   <h1 class="wordmark disp">
-    <span>RUNNING</span>
+    <span>R<span class="ghost">U</span>NNING</span>
     <span>NEEDS <span class="u">U</span></span>
   </h1>
   <p class="hero-pitch"><strong>U Run Club</strong> is for every runner with an ambition: first 5K, first marathon, sub-3, or just out the door 4 days a week. <strong class="nowrap">You define the goal.</strong></p>
