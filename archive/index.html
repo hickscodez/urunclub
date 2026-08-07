@@ -37,6 +37,13 @@
 
   .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; }
   .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; text-decoration:none; }
+  .topnav { display:flex; align-items:center; gap:18px; }
+  .topnav a {
+    font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid rgba(10,17,32,0.25); padding-bottom:2px;
+  }
+  .topnav a:hover { color:var(--blue); border-bottom-color:var(--blue); }
   .pill { font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1px solid var(--blue); border-radius:999px; padding:6px 14px 5px; }
   .topline { border-bottom:1px solid var(--line); }
 
@@ -141,7 +148,11 @@
 <div class="topline">
   <div class="wrap topbar">
     <a class="mark" href="/">U R<span class="u">U</span>N CLUB</a>
-    <div class="pill">Welcome to the club</div>
+    <nav class="topnav">
+      <a href="/">Home</a>
+      <a href="/number/">Your number</a>
+      <span class="pill">Welcome to the club</span>
+    </nav>
   </div>
 </div>
 
