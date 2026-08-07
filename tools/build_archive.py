@@ -162,12 +162,12 @@ PAGE = """<!DOCTYPE html>
   .label { font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--faint); }
   a { color:inherit; }
 
-  .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; }
   .topbar .mark { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:20px; letter-spacing:0.05em; text-decoration:none; }
   .pill { font-family:'DIN Alternate', Menlo, sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--blue); border:1px solid var(--blue); border-radius:999px; padding:6px 14px 5px; }
   .topline { border-bottom:1px solid var(--line); }
 
-  .hero { padding:64px 0 40px; }
+  .hero { padding:64px 24px 40px; }
   .eyebrow { display:flex; align-items:center; gap:10px; font-family:'DIN Alternate', Menlo, sans-serif; font-size:12px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); margin-bottom:26px; }
   .eyebrow::before { content:"+"; color:var(--faint); font-weight:400; }
   .wordmark { line-height:0.86; letter-spacing:0.005em; }
@@ -178,9 +178,9 @@ PAGE = """<!DOCTYPE html>
   .hero-pitch strong { color:var(--ink); font-weight:600; }
 
   .rows { display:flex; flex-direction:column; }
-  .row { display:flex; gap:20px; padding:22px 0; border-top:1px solid var(--line); }
+  .row { display:flex; flex-direction:column; gap:10px; padding:22px 0; border-top:1px solid var(--line); }
   .row:last-child { border-bottom:1px solid var(--line); }
-  .when { flex:0 0 84px; font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:12px; letter-spacing:0.08em; color:var(--blue); text-transform:uppercase; padding-top:5px; }
+  .when { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:12px; letter-spacing:0.08em; color:var(--blue); text-transform:uppercase; }
   .when b { display:inline-block; background:rgba(18,51,232,0.08); border-radius:6px; padding:4px 9px 3px; font-weight:700; }
   .row h3 { font-weight:700; font-size:17px; margin-bottom:4px; letter-spacing:-0.01em; }
   .row p { color:var(--muted); font-size:15.5px; max-width:32em; }
@@ -193,7 +193,7 @@ PAGE = """<!DOCTYPE html>
   .tbtn { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; cursor:pointer; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:9px 14px 7px; box-shadow:var(--shadow); }
   .tbtn[aria-pressed="true"] { background:var(--blue); border-color:var(--blue); color:#fff; box-shadow:0 2px 0 var(--blue-deep); }
 
-  section.build { padding:56px 0 8px; }
+  section.build { padding:56px 24px 8px; }
   .sec-head { font-size:46px; line-height:1; margin-bottom:8px; }
   .sec-sub { margin-bottom:26px; }
 
@@ -244,7 +244,7 @@ PAGE = """<!DOCTYPE html>
   .capture .ok b { color:var(--blue); }
   .joiner p.jsub { color:var(--muted); max-width:32em; }
 
-  .fine { padding:44px 0 20px; }
+  .fine { padding:44px 24px 20px; }
   .fine p { font-size:13px; color:var(--faint); max-width:40em; margin-bottom:10px; }
   footer { margin-top:20px; border-top:1px solid var(--line); padding:26px 0 46px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
   footer .fm { font-family:'Avenir Next Condensed',sans-serif; font-weight:800; text-transform:uppercase; font-size:18px; letter-spacing:0.05em; }
@@ -253,14 +253,14 @@ PAGE = """<!DOCTYPE html>
 
   @media (min-width:900px) {
     .wrap { max-width:1040px; }
-    .hero { padding:88px 0 56px; }
+    .hero { padding:88px 24px 56px; }
     .sec-head { font-size:58px; }
     .capture { flex-direction:row; max-width:620px; }
     .capture input { flex:1; }
     .btn { width:auto; padding:16px 36px 15px; white-space:nowrap; }
     .chart { height:260px; }
-    .row { gap:40px; }
-    .when { flex:0 0 104px; }
+    .row { flex-direction:row; gap:40px; }
+    .when { flex:0 0 104px; padding-top:5px; }
   }
 </style>
 </head>
@@ -313,7 +313,7 @@ PAGE = """<!DOCTYPE html>
 @@SECTIONS@@
 
 <div class="joiner">
-  <section class="wrap" style="padding:0;">
+  <section class="wrap" style="padding:0 24px;">
     <h2 class="sec-head disp">R<span class="ghost">u</span>n the next one with <span class="u">u</span>s</h2>
     <p class="jsub">The next build in this archive is happening right now: Chicago, Oct 11. The Log drops every Monday. Members run their percentage.</p>
     <form class="capture" action="https://app.kit.com/forms/9751172/subscriptions" method="post" data-urc-form>
