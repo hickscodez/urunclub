@@ -195,6 +195,8 @@ PAGE = """<!DOCTYPE html>
   .tiersel { display:flex; gap:8px; flex-wrap:wrap; }
   .tbtn { font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:13px; letter-spacing:0.1em; cursor:pointer; background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:9px 14px 7px; box-shadow:var(--shadow); }
   .tbtn[aria-pressed="true"] { background:var(--blue); border-color:var(--blue); color:#fff; box-shadow:0 2px 0 var(--blue-deep); }
+  .tierconfirm { display:none; flex-basis:100%; margin-top:10px; font-family:'DIN Alternate', Menlo, sans-serif; font-size:13px; letter-spacing:0.04em; color:var(--ink); background:rgba(18,51,232,0.08); border-left:4px solid var(--blue); border-radius:0 8px 8px 0; padding:10px 14px 8px; }
+  .tierconfirm b { color:var(--blue); }
 
   section.build { padding:56px 24px 8px; }
   .sec-head { font-size:46px; line-height:1; margin-bottom:8px; }
@@ -312,6 +314,7 @@ PAGE = """<!DOCTYPE html>
       <button class="tbtn" data-pct="40" aria-pressed="false">THE 40</button>
       <button class="tbtn" data-pct="60" aria-pressed="false">THE 60</button>
     </div>
+    <p class="tierconfirm" id="tierconfirm" role="status"></p>
   </div>
 </div>
 
@@ -378,12 +381,18 @@ document.querySelectorAll('.tbtn').forEach(function (b) {
   });
 });
 
-/* ?u=20|30|40|60 pre-selects the tier (the email link triggers land here) */
+/* ?u=20|30|40|60 pre-selects the tier (the email tier links land here) and
+   confirms the pick so the tap visibly did something */
 (function () {
   var m = location.search.match(/[?&]u=(20|30|40|60)\\b/);
   if (!m) return;
   var b = document.querySelector('.tbtn[data-pct="' + m[1] + '"]');
   if (b) b.click();
+  var c = document.getElementById('tierconfirm');
+  if (c) {
+    c.innerHTML = "Got it. You're <b>THE " + m[1] + "</b>. Monday's email converts accordingly.";
+    c.style.display = 'block';
+  }
 })();
 
 function showTT(bar, x, y) {
