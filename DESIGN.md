@@ -54,7 +54,9 @@ and 3:1 contrast on white). Light theme only; the brand is paper, no dark mode.
 - **ticker** — cobalt marquee strip. Crawls left at ~44px/s (90s seamless loop, 2
   identical spans, translateX -50%); spans must be wider than any viewport (9 phrase
   pairs ≈ 3,940px) or the loop drags a blank gap. Freezes under `prefers-reduced-motion`.
-  Motion rule sitewide: animation must earn its place (this + the archive tier rescale).
+  Motion rule sitewide: animation must earn its place (this + the archive tier rescale +
+  the archive ?u= arrival auto-scroll to the tier confirmation; all freeze/jump under
+  prefers-reduced-motion).
 - **rows** — hairline-separated list with a cobalt `when` chip column. Steps, schedules.
 - **bib** — race-bib card (2 punch holes) for tier numbers.
 - **tbtn** — tier toggle buttons; `aria-pressed`, cobalt when active.

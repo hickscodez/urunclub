@@ -393,6 +393,14 @@ document.querySelectorAll('.tbtn').forEach(function (b) {
     c.innerHTML = "Got it. You're <b>THE " + m[1] + "</b>. Monday's email converts accordingly.";
     c.style.display = 'block';
   }
+  /* land on the confirmation, not the hero: they came to see the pick took */
+  var bar = document.querySelector('.tierbar');
+  if (bar) {
+    var instant = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(function () {
+      bar.scrollIntoView({ behavior: instant ? 'auto' : 'smooth', block: 'start' });
+    }, 150);
+  }
 })();
 
 function showTT(bar, x, y) {
