@@ -119,7 +119,7 @@
   .rows { display:flex; flex-direction:column; }
   .sec-head + .rows { margin-top:32px; }
   .row { display:flex; gap:20px; padding:30px 0; border-top:1px solid var(--line); }
-  .row:last-child { border-bottom:1px solid var(--line); }
+  /* no closing border on the last row: the tiers band's top hairline is the closing rule */
   .when {
     flex:0 0 84px;
     font-family:'DIN Alternate', Menlo, sans-serif; font-weight:700; font-size:12px; letter-spacing:0.08em;
@@ -152,8 +152,8 @@
   .datastrip-cap { margin-top:10px; }
 
   /* ---------- tiers ---------- */
-  .tiers { background:var(--tint); margin-top:24px; padding-bottom:64px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .tiers section.wrap { padding-top:36px; } /* mirrors the 36px of white above the band edge */
+  .tiers { background:var(--tint); margin-top:0; padding-bottom:64px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .tiers section.wrap { padding-top:30px; } /* mirrors the 30px row padding above the band's hairline */
   .bibs { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; }
   .bib {
     background:var(--paper); color:var(--ink);
@@ -243,7 +243,7 @@
   </div>
 </div>
 
-<section class="wrap">
+<section class="wrap" style="padding-bottom:0;">
   <h2 class="sec-head disp">How it works</h2>
   <div class="rows">
     <div class="row">
