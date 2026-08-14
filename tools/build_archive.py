@@ -299,7 +299,7 @@ PAGE = """<!DOCTYPE html>
     </div>
     <div class="row">
       <div class="when"><b>Step 3</b></div>
-      <div><h3>Apply your number.</h3><p>Pick your tier below and every week recalculates to your percentage. Proven training that works, at a volume that works for you.</p></div>
+      <div><h3>Apply your tier.</h3><p>Pick your tier below and every week recalculates to your percentage. Proven training that works, at a volume that works for you.</p></div>
     </div>
   </div>
 </header>
