@@ -42,7 +42,7 @@ and 3:1 contrast on white). Light theme only; the brand is paper, no dark mode.
 ## Layout
 
 - `.wrap`: max-width 680px mobile-first, 1040px at ≥900px, 24px side padding.
-- Sections: 56-64px top padding. Alternate `--paper` and `--tint` full-bleed bands.
+- Sections: 56-64px top padding; a tint band holding a single component group (e.g. the tier band) may run a tighter 48px, symmetric top/bottom (2026-08-13). Alternate `--paper` and `--tint` full-bleed bands.
 - Tint bands get 1px `--line` hairlines on both edges. The bare white→tint step
   (1.09:1) is too weak to read as an edge and smears into a phantom gradient
   (Mach banding); the hairline anchors it, matching every other edge on the site.
