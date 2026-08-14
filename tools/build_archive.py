@@ -276,7 +276,7 @@ PAGE = """<!DOCTYPE html>
     <a class="mark" href="/">U R<span class="u">U</span>N CLUB</a>
     <nav class="topnav">
       <a href="/">Home</a>
-      <a href="/number/">Your number</a>
+      <a href="/number/">Your tier</a>
       <span class="pill">Welcome to the club</span>
     </nav>
   </div>
@@ -306,7 +306,7 @@ PAGE = """<!DOCTYPE html>
 
 <div class="tierbar">
   <div class="wrap">
-    <span class="label">Your number</span>
+    <span class="label">Your tier</span>
     <div class="tiersel" role="group" aria-label="Scale weeks to your tier">
       <button class="tbtn" data-pct="100" aria-pressed="true">RAW</button>
       <button class="tbtn" data-pct="20" aria-pressed="false">THE 20</button>
@@ -433,7 +433,8 @@ document.querySelectorAll('[data-urc-form]').forEach(function (f) {
     fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function () {
-        f.innerHTML = '<div class="ok">You\\u2019re in. <b>The Number drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
+        plausible('Join');
+        f.innerHTML = '<div class="ok">You\\u2019re in. <b>The Log drops Monday.</b> Check your inbox to confirm, and hit reply with your ambition. #RnningNeedsU</div>';
       })
       .catch(function () {
         btn.disabled = false; btn.textContent = 'Join the club';
