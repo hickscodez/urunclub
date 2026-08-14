@@ -339,7 +339,7 @@ PAGE = """<!DOCTYPE html>
 <div class="wrap">
   <footer>
     <div class="fm">U R<span class="u">U</span>N CLUB</div>
-    <div class="fl">@_charleshicks<span>#RnningNeedsU</span><span>urunclub.com</span></div>
+    <div class="fl">@_charleshicks<span><a href="/terms/" style="color:inherit;">Terms</a></span><span>#RnningNeedsU</span><span>urunclub.com</span></div>
   </footer>
 </div>
 
